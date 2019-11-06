@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wzp.dao.MovieDao">
+  <select id="list" resultType="com.wzp.domain.Movie">
+  	select * from movie
+  	<where>
+  		<if test="name != null and name != ''">
+  			and name like "%"#{name}"%"
+  		</if>
+  		<if test="p1 != null and p1 != ''">
+  			and price >= #{p1}
+  		</if>
+  		<if test="p2 != null and p2 != ''">
+  			and price &lt;= #{p2}
+  		</if>
+  		<if test="time1 != null and time1 != ''">
+  			and uptime >= #{time1}
+  		</if>
+  		<if test="time2 != null and time2 != ''">
+  			and uptime &lt;= #{time2}
+  		</if>
+  	</where>
+  </select>
+  </mapper> 
